@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+
+{%  block main %}
+
+    <div class="row">
+        <div class="col">
+                <div style="text-align: center;">
+                    <div class="card" style="width: 50%; margin: auto; margin-top: 10%; padding-bottom: 5%;">
+                        <p style="text-align: right; margin-top: 5px; margin-right: 5px;">{{ term.votescount}} <i style="color: #FFEB3B;" class="fas fa-star"></i></p>
+                        <h4 style="color: brown; margin-bottom: 10%;">Terme : {{ term.term }}</h4>
+                        <div>
+                            {% if (term.definiton1 is defined) or (term.definition2 is defined) %}
+                            <h4>Définition(s)</h4>
+                            <p>{{ term.definition1 }}</p>
+                            {% if term.definition2 %}
+                            <p>{{ term.definition2 }}</p>
+                            {% endif %}
+                            {% endif %}
+
+                            {% if term.example %}
+                            <h4>Exemple</h4>
+                            <p>{{ term.example }}</p>
+                            {% endif %}
+
+                            {% if term.translation %}
+                            <h4>Traduction </h4>
+                            <p>{{ term.translation }}</p>
+                            {% endif %}
+
+                            {% if term.variation %}
+                            <h4>Variation</h4>
+                            <p>{{ term.variation }}</p>
+                            {% endif %}
+
+                            {% if term.pronunciation %}
+                            <h4>Prononciation</h4>
+                            <p>{{ term.pronunciation}}</p>
+                            {% endif %}
+
+                            {%  if term.origin %}
+                            <h4>Origine</h4>
+                            <p>{{ term.origin }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Modifier</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

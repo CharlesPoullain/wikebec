@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+
+{%  block main %}
+    <div class="row">
+        <div class="col">
+            <div style="text-align: center;">
+                <div style="margin-top: 25px;  margin-left: 20%; margin-right: 20%;">
+                    <h2 style="margin-bottom: 25px;">Wikébec</h2>
+                    <p>
+                        Wikébec est un <strong>dictionnaire</strong> participatif du <strong>Français Québécois</strong>, ne contenant que les termes <strong>spécifiques au Québec</strong>, toujours utilisés aujourd'hui.
+                    </p>
+                    <p>
+                        Wikébec est donc un <strong>dictionnaire québécois</strong> s'adressant à tous ceux ayant avant tout besoin de <strong>pragmatisme</strong> face au Français Québécois. Sur Wikébec, vous pouvez modifier, ajouter ou retirer vous-mêmes les définitions.
+                        <strong>Le dictionnaire vous appartient!</strong>
+                    </p>
+                </div>
+
+                <div style="margin-top: 10%;">
+                    <div class="row">
+                        <div class="col" >
+                            <div class="card" style="margin-left: 5%; padding-top: 5%; padding-bottom: 5%;">
+                                <h4 style="color: #CC7832">Le mot du moment : </h4>
+                                <p><strong>{{ displayTerm.term }}</strong></p>
+                                <p>{{ displayTerm.definition1 }}</p>
+                                <p>{{ displayTerm.definition2 }}</p>
+                                <a href="{{ path('termDetail', {'id': displayTerm.id}) }}" style="color: white; width: 20%; margin: auto; " class="btn btn-info">Détail du mot</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div style="overflow: scroll; height: 70vh; margin-right: 5%; margin-top: 20%;">
+                <h3 style="text-align: center">Liste des termes : </h3>
+                <ul class="list-group">
+                    {% for term in terms %}
+                        <a  href="{{ path('termDetail', {'id': term.id}) }}" class="blocka">
+                            <li class="list-group-item blocklink">
+                                <div class="row">
+                                    <div class="col">
+                                        <p style="text-align: left;">{{ term.term }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p style="text-align: right;">{{ term.votescount}} <i style="color: #FFEB3B;" class="fas fa-star"></i></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </a>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+

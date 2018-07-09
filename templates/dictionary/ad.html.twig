@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{%  block main %}
+
+    <div class="row">
+        <div class="col">
+            <div style="text-align: center;">
+                <div class="card" style="width: 60%; margin: auto; margin-top: 10%; padding: 5%;">
+
+                    <h4 style="color: brown;">Ajout du terme</h4>
+                    <div style="height: 450px;">
+                        <div style="overflow: scroll; height: 100%; margin-right: 5%; margin-top: 5%; width: 100%;">
+                            <div style="padding-bottom: 10%;">
+                                {{ form_start(termForm) }}
+                                {{ form_widget(termForm) }}
+                                <button class="btn btn-primary" type="submit">Enregistrer</button>
+                                {{ form_end(termForm) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
