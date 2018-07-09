@@ -19,6 +19,30 @@ class TermRepository extends ServiceEntityRepository
         parent::__construct($registry, Term::class);
     }
 
+    public function findSearchTerms ($keyword = null) {
+
+        /*
+        $dql = "SELECT a FROM App\Entity\Ad a
+        WHERE a.category = :cat
+        ORDER BY a.dateCreated DESC";
+        $query = $this->getEntityManager()->createQuery($dql);
+       */
+
+        $qb = $this->createQueryBuilder("a");
+
+        if($keyword) {
+            $qb->andWhere("(a.term LIKE :kw)");
+            $qb->setParameter("kw", "%$keyword%");
+        }
+
+        $query = $qb->getQuery();
+
+        $query->setMaxResults(50);
+        $ads = $query->getResult();
+
+        return $ads;
+    }
+
 //    /**
 //     * @return Term[] Returns an array of Term objects
 //     */

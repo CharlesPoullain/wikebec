@@ -5,8 +5,9 @@
     <div class="row">
         <div class="col">
                 <div style="text-align: center;">
-                    <div class="card" style="width: 50%; margin: auto; margin-top: 10%; padding-bottom: 5%;">
-                        <p style="text-align: right; margin-top: 5px; margin-right: 5px;">{{ term.votescount}} <i style="color: #FFEB3B;" class="fas fa-star"></i></p>
+                    <div class="card" style="width: 90%; margin: auto; margin-top: 10%; padding-bottom: 5%;">
+
+                        <p style="text-align: right; margin-top: 5px; margin-right: 5px;"> <a class="btn btn-outline-warning">{{ term.votescount}} <i style="color: #FFEB3B;" class="fas fa-star"></i></a></p>
                         <h4 style="color: brown; margin-bottom: 10%;">Terme : {{ term.term }}</h4>
                         <div>
                             {% if (term.definiton1 is defined) or (term.definition2 is defined) %}
@@ -44,13 +45,41 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Modifier</button>
+                                <a href="{{ path('termUpdate',{"id": term.id}) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Modifier</a>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</button>
+                                <a href="{{ path('termDelete', {"id": term.id }) }}" style="color: white;" class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</a>
                             </div>
                         </div>
                 </div>
+
+                <div class="card" style="width: 90%; margin: auto; margin-top: 10%; padding-bottom: 5%;">
+                    <div style="padding: 5%;">
+                        <h4>Commentaires</h4>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div style="overflow: scroll; height: 70vh; margin-right: 5%; margin-top: 20%;">
+                <h3 style="text-align: center">Liste des termes : </h3>
+                <ul class="list-group">
+                    {% for term in terms %}
+                        <a  href="{{ path('termDetail', {'id': term.id}) }}" class="blocka">
+                            <li class="list-group-item blocklink">
+                                <div class="row">
+                                    <div class="col">
+                                        <p style="text-align: left;">{{ term.term }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p style="text-align: right;">{{ term.votescount}} <i style="color: #FFEB3B;" class="fas fa-star"></i></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </a>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>

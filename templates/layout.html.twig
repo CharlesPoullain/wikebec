@@ -25,9 +25,9 @@
                 </a>
                 <a  href="{{ path('termAdd') }}" class="btn btn-outline-dark"><i class="fas fa-plus-circle"></i> Ajouter un nouveau terme</a>
 
-                <form class="form-inline" style="margin-top: 20px;">
+                <form class="form-inline" action="{{ path('termSearch') }}" style="margin-top: 20px;">
                     <div style="margin-left: auto; margin-right: auto; width: 100%;">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Recherche">
+                        <input class="form-control col-auto" type="search" name="keyword "placeholder="Recherche" aria-label="Recherche" value="{{ app.request.get('keyword') }}">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
                     </div>
                 </form>
@@ -67,7 +67,7 @@
 
                     </div>
                 </div>
-                <div class="col-10" style="background-color: #ededef; padding: 0;">
+                <div class="col-10" style="background-color: #ededef; padding: 0; height: 100vh;">
                     {% block main %} {% endblock %}
                 </div>
             </div>
