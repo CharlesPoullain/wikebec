@@ -23,14 +23,25 @@
                 <a class="navbar-brand" href="{{ path('main') }}">
                     <img src="{{ asset("assets/img/flag.jpg") }}" width="100" class="d-inline-block align-top" alt="">
                 </a>
-                <a  href="{{ path('termAdd') }}" class="btn btn-outline-dark"><i class="fas fa-plus-circle"></i> Ajouter un nouveau terme</a>
-
-                <form class="form-inline" action="{{ path('termSearch') }}" style="margin-top: 20px;">
+                <form action="{{ path('termSearch') }}" class="form-inline" style="margin-top: 20px;">
                     <div style="margin-left: auto; margin-right: auto; width: 100%;">
-                        <input class="form-control col-auto" type="search" name="keyword "placeholder="Recherche" aria-label="Recherche" value="{{ app.request.get('keyword') }}">
+                        <input class="form-control col-auto" type="search" name="keyword" placeholder="Recherche" aria-label="Recherche" value="{{ app.request.get('keyword') }}">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
                     </div>
                 </form>
+                <div>
+                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+                        {%  if app.user %}
+                            <a class="nav-link" href="{{ path('logout') }}" title="logout">Se Déconnecter</a>
+                        {% else %}
+                            <a href="{{ path('login') }}"  class="btn btn-primary">Se Connecter</a>
+                            <a href="{{ path('register') }}"  class="btn btn-light">S'inscrire</a>
+                        {% endif %}
+
+                    </div>
+
+                </div>
             </nav>
             <div class="row" style="height: 80vh; width: 100%;">
                 <div class="col-2" style="position: relative; padding: 0;">
@@ -51,7 +62,7 @@
                             </div>
                             <hr>
                             <div class="blockmenu">
-                                <a href="#" style="color: #efd41d;">
+                                <a href="{{ path('termAdd') }}" style="color: #efd41d;">
                                     <li><p><i class="fas fa-thumbs-up"></i></p></li>
                                     <li><p>Contribuer</p></li>
                                 </a>

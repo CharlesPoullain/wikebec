@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; text-align: center }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .main-block-form { margin: 1em auto; width: 80%;}
+    </style>
+
+    <div class="example-wrapper">
+        <h1>Connectez vous</h1>
+
+        <div style="text-align: center; margin-top: 50px; padding-top: 20px;">
+
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+               Les identifiants ne sont pas valides !!!
+            </div>
+            {% endif %}
+            <form action="{{ path('login') }}" method="post" style="width: 40%; margin: auto;">
+                <div class="form-group">
+
+                <label for="username">Nom d'utilisateur :</label>
+                <input  class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" />
+
+                <label for="password">Mot de passe :</label>
+                <input  class="form-control" type="password" id="password" name="_password" />
+
+                <button style="margin-top: 30px;" type="submit" class="btn btn-primary">Se connecter</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div class="main-block-form">
+
+    </div>
+{% endblock %}

@@ -6,8 +6,10 @@
         <div class="col">
                 <div style="text-align: center;">
                     <div class="card" style="width: 90%; margin: auto; margin-top: 10%; padding-bottom: 5%;">
+                        {%  if app.user %}
+                        <p style="text-align: right; margin-top: 5px; margin-right: 5px;"> <a href="{{ path('rateterm', {"id": term.id}) }}" class="btn btn-outline-warning">{{ term.votescount}} <i style="color: #FFEB3B;" class="fas fa-star"></i></a></p>
+                        {% endif %}
 
-                        <p style="text-align: right; margin-top: 5px; margin-right: 5px;"> <a class="btn btn-outline-warning">{{ term.votescount}} <i style="color: #FFEB3B;" class="fas fa-star"></i></a></p>
                         <h4 style="color: brown; margin-bottom: 10%;">Terme : {{ term.term }}</h4>
                         <div>
                             {% if (term.definiton1 is defined) or (term.definition2 is defined) %}
@@ -43,6 +45,8 @@
                             <p>{{ term.origin }}</p>
                             {% endif %}
                         </div>
+
+                        {%  if app.user %}
                         <div class="row">
                             <div class="col">
                                 <a href="{{ path('termUpdate',{"id": term.id}) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Modifier</a>
@@ -51,14 +55,31 @@
                                 <a href="{{ path('termDelete', {"id": term.id }) }}" style="color: white;" class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</a>
                             </div>
                         </div>
+                        {% endif %}
                 </div>
 
                 <div class="card" style="width: 90%; margin: auto; margin-top: 10%; padding-bottom: 5%;">
                     <div style="padding: 5%;">
-                        <h4>Commentaires</h4>
+                        <h4>Derniers commentaires</h4>
+                        {% for commentary in previouscommentary %}
+                            {{ commentary.note }}
+                        {%  endfor %}
+                    </div>
+                </div>
+
+                {%  if app.user %}
+                <div class="card" style="width: 90%; margin: auto; margin-top: 10%; padding-bottom: 5%;">
+                    <div style="padding: 5%;">
+                        <h4>Laisser un commentaire</h4>
+
+                        {{ form_start(commentaryForm) }}
+                        {{ form_widget(commentaryForm) }}
+                        <button class="btn btn-primary" type="submit">Enregistrer</button>
+                        {{ form_end(commentaryForm) }}
 
                     </div>
                 </div>
+                {% endif %}
             </div>
         </div>
         <div class="col-4">

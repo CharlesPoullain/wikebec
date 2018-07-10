@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{%  block title %} Annonce |    {{ parent() }}{% endblock %}
+
+{% block main %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; text-align: center }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .main-block-form { margin: 1em auto; width: 80%;}
+    </style>
+
+    <div class="example-wrapper">
+        <h1>Créer un compte </h1>
+
+        <div style="text-align: center; margin-top: 50px; padding-top: 20px;">
+
+            {{ form_start(userForm) }}
+            {{ form_widget(userForm) }}
+            <button class="btn btn-primary" type="submit">Enregistrer</button>
+            {{ form_end(userForm) }}
+
+        </div>
+    </div>
+    <div class="main-block-form">
+
+    </div>
+{% endblock %}

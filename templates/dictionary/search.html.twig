@@ -12,9 +12,18 @@
                         <div style="overflow: scroll; height: 100%; margin-right: 5%; margin-top: 5%; width: 100%;">
                             <div style="padding-bottom: 10%;">
                                 {% for term in terms %}
-                                    <div>
-                                        {{ term.term  }}
-                                    </div>
+                                    <a  href="{{ path('termDetail', {'id': term.id}) }}" class="blocka">
+                                        <li class="list-group-item blocklink">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p style="text-align: left;">{{ term.term }}</p>
+                                                </div>
+                                                <div class="col">
+                                                    <p style="text-align: right;">{{ term.votescount}} <i style="color: #FFEB3B;" class="fas fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </a>
                                 {%  endfor %}
                             </div>
                         </div>

@@ -21,6 +21,13 @@ class TermType extends AbstractType
                     ),
                     "label" => "Nom du nouveau terme")
                 )
+            ->add('slug', null,
+                array(
+                    'attr' => array(
+                        'placeholder' => '...',
+                    ),
+                    "label" => "Identifiant du nouveau terme")
+            )
             ->add('definition1', null,
                 array(
                     'attr' => array(
