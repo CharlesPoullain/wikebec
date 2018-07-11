@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{%  block main %}
+    <div class="row">
+        <div class="col">
+            <div style="overflow: scroll; height: 70vh; margin-top: 20px;">
+                <h3 style="text-align: center">Liste des termes avec plus de {{ notesmax }} étoiles : </h3>
+                <ul class="list-group">
+                    {% for term in terms %}
+                        <a  href="{{ path('termDetail', {'id': term.id}) }}" class="blocka">
+                            <li class="list-group-item blocklink">
+                                <div class="row">
+                                    <div class="col">
+                                        <p style="text-align: left;">{{ term.term }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p style="text-align: right;">{{ term.votescount}} <i style="color: #FFEB3B;" class="fas fa-star"></i></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </a>
+                    {% endfor %}
+                </ul>
+            </div>
+    </div>
+
+
+{% endblock %}
+

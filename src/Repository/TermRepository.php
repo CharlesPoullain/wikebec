@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Term;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -41,6 +42,21 @@ class TermRepository extends ServiceEntityRepository
         $ads = $query->getResult();
 
         return $ads;
+    }
+
+
+    public function findHeartsTerms ($starsmin = 30) {
+
+        $qb = $this->createQueryBuilder("a");
+
+        $qb->andWhere("(a.votesCount >= :starsmin)");
+        $qb->setParameter("starsmin", $starsmin);
+
+        $query = $qb->getQuery();
+
+        $terms = $query->getResult();
+
+        return $terms;
     }
 
 //    /**

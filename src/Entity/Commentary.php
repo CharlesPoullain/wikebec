@@ -31,6 +31,11 @@ class Commentary
      */
     private $note;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dateCreated;
+
     public function getId()
     {
         return $this->id;
@@ -68,6 +73,18 @@ class Commentary
     public function setNote(string $note): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    public function getDateCreated(): ?\DateTimeInterface
+    {
+        return $this->dateCreated;
+    }
+
+    public function setDateCreated(\DateTimeInterface $dateCreated): self
+    {
+        $this->dateCreated = $dateCreated;
 
         return $this;
     }

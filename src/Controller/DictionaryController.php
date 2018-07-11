@@ -35,6 +35,7 @@ class DictionaryController extends Controller
 
             $commentary->setTerm($term);
             $commentary->setUser($this->getUser());
+            $commentary->setDateCreated(new \DateTime());
 
             $em->persist($commentary);
 
@@ -78,7 +79,8 @@ class DictionaryController extends Controller
 
             $this->addFlash("success", "Votre terme a bien été ajouté !");
 
-            return $this->redirectToRoute('main');
+
+            return $this->redirectToRoute('termDetail', ["id" => $term->getId()]);
         }
 
         return $this->render('dictionary/adterm.html.twig', [
@@ -108,7 +110,7 @@ class DictionaryController extends Controller
             $em->flush();
             $this->addFlash("success", "Votre terme a bien été modifiée !");
 
-            return $this->redirectToRoute('main');
+            return $this->redirectToRoute('termDetail', ["id" => $term->getId()]);
         }
 
         return $this->render('dictionary/update.html.twig', [

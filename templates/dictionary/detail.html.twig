@@ -58,28 +58,33 @@
                         {% endif %}
                 </div>
 
+
                 <div class="card" style="width: 90%; margin: auto; margin-top: 10%; padding-bottom: 5%;">
                     <div style="padding: 5%;">
                         <h4>Derniers commentaires</h4>
                         {% for commentary in previouscommentary %}
-                            {{ commentary.note }}
+                            <div style="background-color: rgba(0,0,0,0.1); padding-left: 2%; padding-top: 2%; padding-right: 2%; border-radius: 15px;">
+                                <p style="text-align: left;">{{ commentary.note }}</p>
+                                <p style="text-align: right; font-size: 12px;"><em>Posté par {{ commentary.user.username }} le {{ commentary.dateCreated | date("H:i d-m-Y") }}</em></p>
+                            </div>
+                        {% else %}
+                            <p>Il n'y a pas de commentaires</p>
                         {%  endfor %}
-                    </div>
-                </div>
-
-                {%  if app.user %}
-                <div class="card" style="width: 90%; margin: auto; margin-top: 10%; padding-bottom: 5%;">
-                    <div style="padding: 5%;">
-                        <h4>Laisser un commentaire</h4>
-
-                        {{ form_start(commentaryForm) }}
-                        {{ form_widget(commentaryForm) }}
-                        <button class="btn btn-primary" type="submit">Enregistrer</button>
-                        {{ form_end(commentaryForm) }}
 
                     </div>
+                    {%  if app.user %}
+                            <div style="padding: 5%;">
+                                <hr>
+                                <h4>Laisser un commentaire</h4>
+
+                                {{ form_start(commentaryForm) }}
+                                {{ form_widget(commentaryForm) }}
+                                <button class="btn btn-primary" type="submit">Enregistrer</button>
+                                {{ form_end(commentaryForm) }}
+
+                            </div>
+                    {% endif %}
                 </div>
-                {% endif %}
             </div>
         </div>
         <div class="col-4">

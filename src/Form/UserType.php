@@ -32,6 +32,11 @@ class UserType extends AbstractType
                         'placeholder' => '******',
                     ))
             )
+            ->add('country', null, array(
+                    'attr' => array(
+                        'placeholder' => 'Pays',
+                    ))
+            )
         ;
     }
 

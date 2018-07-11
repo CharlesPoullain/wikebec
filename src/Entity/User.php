@@ -49,6 +49,11 @@ class User implements UserInterface
      */
     private $commentaries;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $country;
+
     public function __construct()
     {
         $this->commentaries = new ArrayCollection();
@@ -156,6 +161,18 @@ class User implements UserInterface
                 $commentary->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
 
         return $this;
     }
